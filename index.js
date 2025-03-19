@@ -5,7 +5,7 @@ require('dotenv').config();
 // Kafka configuration
 const kafka = new Kafka({
     clientId: 'sensor-data-producer',
-    brokers: [process.env.KAFKA_BROKER || "my-cluster-kafka-bootstrap.kafka:9092"],
+    brokers: ["my-cluster-kafka-bootstrap.kafka:9092"],
     sasl: {
         mechanism: "scram-sha-512",
         username: process.env.KAFKA_SASL_USERNAME,
