@@ -24,10 +24,14 @@ async function publishMessage() {
         setInterval(async () => {
             const message = generateSensorData();
             
-            await producer.send({
+          await producer.send({
                 topic: topic,
-                messages: [{ value: JSON.stringify(message) }],
+                messages: [{
+                    key: message.device_id, // or any logic to generate a key
+                    value: JSON.stringify(message)
+                }],
             });
+
 
             console.log("Published sensor data to Kafka:", message);
         }, 5000);
